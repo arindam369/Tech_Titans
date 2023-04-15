@@ -1,0 +1,19 @@
+{
+  "name": "ecoup",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "antd": "^5.4.2",
+    "firebase": "^9.19.1",
+    "next": "13.3.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-loader-spinner": "^5.3.4"
+  }
+}
