@@ -1,4 +1,6 @@
 import { useContext } from 'react'
+import React, { useState } from 'react'
+import Modal from 'react-modal'
 import styles from '../../styles/Home.module.css'
 import Image from 'next/image'
 import AuthContext from '@/store/AuthContext'
@@ -8,10 +10,16 @@ import AuthContext from '@/store/AuthContext'
 // import Img3 from '../assets/rewards/c.webp'
 // import Img4 from '../assets/rewards/d.webp'
 // import Img5 from '../assets/rewards/e.webp'
+// Modal.setAppElement('#root') // this is important for accessibility
 
-const RewardCard = ({ img, name, coins }) => {
+const RewardCard = ({ img, name, coins, onClick }) => {
     return (
-        <div className="h-max w-max single-reward">
+        <div
+            className="h-max w-max single-reward"
+            onClick={() => {
+                onClick()
+            }}
+        >
             <div className="reward-container">
                 <Image
                     className="image-container"
@@ -31,44 +39,53 @@ const RewardCard = ({ img, name, coins }) => {
 
 export default function Gifts() {
     const authCtx = useContext(AuthContext)
+    const [selectedReward, setSelectedReward] = useState(null)
+    const rewards = [
+        { img: '/assets/rewards/a.webp', name: 'T-shirt', coins: 200 },
+        { img: '/assets/rewards/b.webp', name: 'T-shirt', coins: 200 },
+        { img: '/assets/rewards/c.webp', name: 'T-shirt', coins: 200 },
+        { img: '/assets/rewards/d.webp', name: 'T-shirt', coins: 200 },
+        { img: '/assets/rewards/e.webp', name: 'T-shirt', coins: 200 },
+    ]
+
+    const openModal = reward => {
+        setSelectedReward(reward)
+    }
+
+    const closeModal = () => {
+        setSelectedReward(null)
+    }
 
     return (
         <>
-            <div className={styles.profileContainer}>
+            <Modal
+                isOpen={selectedReward !== null}
+                onRequestClose={closeModal}
+                className="modal-size"
+            >
+                <h2>{selectedReward?.name}</h2>
+                <img src={selectedReward?.img} alt={selectedReward?.name} />
+                <p>Coins: {selectedReward?.coins}</p>
+                <button className="btn-success">Order</button>
+                <button className="btn-danger" onClick={closeModal}>
+                    Cancel
+                </button>
+            </Modal>
+            <div className={styles.profileContainer2}>
                 <div className="flex-justtify rewards-header">
                     <h3>Rewards and Prizes</h3>
                     <h3>Dummy Text</h3>
                 </div>
                 <div className="grid-container">
-                    <RewardCard
-                        img={'/assets/rewards/a.webp'}
-                        name={'T-shirt'}
-                        coins={200}
-                    />
-                    <RewardCard
-                        img={'/assets/rewards/b.webp'}
-                        name={'T-shirt'}
-                        coins={200}
-                    />
-                    <RewardCard
-                        img={'/assets/rewards/c.webp'}
-                        name={'T-shirt'}
-                        coins={200}
-                    />
-                    <RewardCard
-                        img={'/assets/rewards/d.webp'}
-                        name={'T-shirt'}
-                        coins={200}
-                    />
-                    <RewardCard
-                        img={'/assets/rewards/e.webp'}
-                        name={'T-shirt'}
-                        coins={200}
-                    />
-                    {/* <RewardCard img={Img2} name={'T-shirt'} coins={200} />
-                    <RewardCard img={Img3} name={'T-shirt'} coins={200} />
-                    <RewardCard img={Img4} name={'T-shirt'} coins={200} />
-                    <RewardCard img={Img5} name={'T-shirt'} coins={200} /> */}
+                    {rewards.map((reward, index) => (
+                        <RewardCard
+                            key={index}
+                            img={reward.img}
+                            name={reward.name}
+                            coins={reward.coins}
+                            onClick={() => openModal(reward)}
+                        />
+                    ))}
                 </div>
             </div>
         </>
