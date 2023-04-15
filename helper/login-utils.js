@@ -26,3 +26,18 @@ export async function updateProfile(userId, dataType, newData, stopLoading){
         // console.log("Profile updation failed...");
     })
 }
+export async function requestGarbage(userId, name, phone, address){
+    update(ref_database(database, 'ecofirst/users/' + userId + '/requestGarbage'), {
+        name: name,
+        userId: userId,
+        phone: phone,
+        address: address,
+        accepted: false
+    }).then((res) => {
+        console.log("Garbage Order placed successfully!");
+    })
+    .catch((err) => {
+        console.log(err);
+        // console.log("User Registration failed...");
+    });
+}
