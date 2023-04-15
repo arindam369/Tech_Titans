@@ -31,7 +31,7 @@ function Home() {
             <Sidebar onUpdateBullet={updateBullet} />
             {selectedBullet === 'profile' && <Profile />}
             {authCtx.userData.userType==="user" && selectedBullet === 'request' && <RequestPage />}
-            <Gifts />
+            {selectedBullet === 'gifts' && <Gifts />}
           {authCtx.userData.userType==="collector" && selectedBullet==="request" && <ViewRequest/>}
     </>
     )

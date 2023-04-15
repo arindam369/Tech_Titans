@@ -125,6 +125,11 @@ input:disabled {
     width: 400px;
     height: 400px;
     padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #fff;
 }
 
 /* Success button */
@@ -175,4 +180,17 @@ input:disabled {
     color: #fff;
     background-color: #dc3545;
     border-color: #dc3545;
+}
+
+.modalSize{
+    width: 500px;
+    height: 400px;
+}
+.image-container{
+    width: 100px;
+    height: 50px;
+}
+.modalImage{
+    height: 100px;
+    width: 100px;
 }

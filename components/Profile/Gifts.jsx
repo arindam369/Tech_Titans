@@ -64,7 +64,7 @@ export default function Gifts() {
                 className="modal-size"
             >
                 <h2>{selectedReward?.name}</h2>
-                <img src={selectedReward?.img} alt={selectedReward?.name} />
+                <img src={selectedReward?.img} alt={selectedReward?.name} className='modalImage'/>
                 <p>Coins: {selectedReward?.coins}</p>
                 <button className="btn-success">Order</button>
                 <button className="btn-danger" onClick={closeModal}>

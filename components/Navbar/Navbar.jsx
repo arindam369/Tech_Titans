@@ -11,10 +11,14 @@ export default function Navbar(){
     authCtx.logout();
   }
 
+  const goToHome = ()=>{
+    router.push("/");  
+  }
+
   return (
     <>
       <div className={styles.navbarContainer}>
-        <div className={styles.navLeft}>
+        <div className={styles.navLeft} onClick={goToHome}>
           EcoFirst
         </div>
         <div className={styles.navRight}>
