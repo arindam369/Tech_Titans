@@ -41,11 +41,11 @@ export default function Gifts() {
     const authCtx = useContext(AuthContext)
     const [selectedReward, setSelectedReward] = useState(null)
     const rewards = [
-        { img: '/assets/rewards/a.webp', name: 'T-shirt', coins: 200 },
-        { img: '/assets/rewards/b.webp', name: 'T-shirt', coins: 200 },
-        { img: '/assets/rewards/c.webp', name: 'T-shirt', coins: 200 },
-        { img: '/assets/rewards/d.webp', name: 'T-shirt', coins: 200 },
-        { img: '/assets/rewards/e.webp', name: 'T-shirt', coins: 200 },
+        { img: '/assets/rewards/a.webp', name: 'Brush', coins: 200 },
+        { img: '/assets/rewards/b.webp', name: 'Cutlery Items', coins: 300 },
+        { img: '/assets/rewards/c.webp', name: 'Holder', coins: 100 },
+        { img: '/assets/rewards/d.webp', name: 'Razor', coins: 50 },
+        { img: '/assets/rewards/e.webp', name: 'Comb', coins: 400 },
     ]
 
     const openModal = reward => {
