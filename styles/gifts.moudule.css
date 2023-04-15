@@ -1,0 +1,73 @@
+.h-max {
+    height: 100%;
+}
+
+.w-max {
+    width: 100%;
+}
+.flex-justtify {
+    display: flex;
+    justify-content: space-between;
+}
+
+.rewards-header {
+    padding: 1.5rem;
+}
+
+/* For screens larger than 1200px */
+@media (min-width: 1200px) {
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 20px;
+    }
+}
+
+/* For screens between 992px and 1199px */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 20px;
+    }
+}
+
+/* For screens between 768px and 991px */
+@media (min-width: 768px) and (max-width: 991px) {
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
+    }
+}
+
+/* For screens smaller than 768px */
+@media (max-width: 767px) {
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 20px;
+    }
+}
+
+.single-reward {
+    border-radius: 0.5rem;
+}
+
+.image-container {
+    width: 100%;
+    height: 300px;
+    border-radius: 0.5rem;
+}
+
+.reward-container {
+    padding: 1.5rem;
+}
+
+.single-reward {
+    transition: all 0.4s ease-in-out;
+}
+
+.single-reward:hover {
+    background: #efe7e7;
+}
