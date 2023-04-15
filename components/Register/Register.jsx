@@ -13,6 +13,7 @@ export default function Register({onLogin}){
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
     const [pass, setPass] = useState("");
+    const [userType, setUserType] = useState("user");
 
     const authCtx = useContext(AuthContext);
     authCtx.stopLoading();
@@ -58,7 +59,7 @@ export default function Register({onLogin}){
         createUserWithEmailAndPassword(auth , email, pass).then(async (userCredential)=>{
             const userId = email && email.split("@")[0].replace(/[.+-]/g, "_");
             console.log(userId);
-            await registerAccount(userId, fullname, email, phone, address);
+            await registerAccount(userId, fullname, email, phone, address, userType);
             notification['success']({
                 message: `Account created successfully`,
                 duration: 2
@@ -73,6 +74,7 @@ export default function Register({onLogin}){
                 duration: 2
             })
             authCtx.logout();
+            authCtx.stopLoading();
         }).catch((err)=>{
             console.log(err);
             notification['error']({
@@ -106,6 +108,13 @@ export default function Register({onLogin}){
                 <div>
                     <label htmlFor="pass">Password: </label>
                     <input type="password" id="pass" placeholder="Enter password" value={pass} onChange={(e)=>{setPass(e.target.value)}}/>
+                </div>
+                <div>
+                    <label htmlFor="userType" className={styles.selectType}>Register as: </label>
+                    <select id="userType" onChange={(e)=>{setUserType(e.target.value)}}>
+                        <option value="user">User</option>
+                        <option value="collector">Collector</option>
+                    </select>
                 </div>
                 <button className={styles.registerButton} onClick={handleRegister}>Register</button>
                 <div className={styles.alreadyHaveAccount}>Already have an account? <div onClick={()=>{onLogin()}}>Login</div></div>

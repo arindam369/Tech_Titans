@@ -9,6 +9,7 @@ import RequestPage from '@/components/Profile/Request'
 import { useContext, useState } from 'react'
 import AuthContext from '@/store/AuthContext'
 import ProtectedRoute from '@/hoc/ProtectedRoute'
+import ViewRequest from '@/components/Profile/ViewRequest'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -27,7 +28,8 @@ function Home() {
       <Navbar/>
       <Sidebar onUpdateBullet={updateBullet}/>
       {selectedBullet==="profile" && <Profile/>}
-      {selectedBullet==="request" && <RequestPage/>}
+      {authCtx.userData.userType==="user" && selectedBullet==="request" && <RequestPage/>}
+      {authCtx.userData.userType==="collector" && selectedBullet==="request" && <ViewRequest/>}
     </>
   )
 }

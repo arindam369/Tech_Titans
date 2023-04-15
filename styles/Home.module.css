@@ -255,3 +255,24 @@
   position: absolute;
   right: 5px;
 }
+.userType{
+  color: rgb(13, 92, 229);
+}
+
+.pendingRequestContainer{
+  background-color: rgb(205, 205, 205);
+  padding: 15px 20px;
+  border-radius: 7px;
+}
+.pendingHeading{
+  margin-bottom: 20px;
+}
+.acceptPendingButton{
+  padding: 8px 20px;
+  cursor: pointer;
+  background-color: green;
+  text-align: center;
+  color: white;
+  margin-top: 10px;
+  border-radius: 5px;
+}

@@ -12,8 +12,9 @@ export default function Profile(){
             <div className={styles.profileContainer}>
                 <div className={styles.profileDpAddress}>
                     <div className={styles.profileDp}>
-                        <Image src={"https://assets.leetcode.com/users/avatars/avatar_1646054996.png"} height={300} width={300} alt="profileDp" className={styles.profileImage}/>
+                        <Image src={authCtx.userData.avatar} height={300} width={300} alt="profileDp" className={styles.profileImage}/>
                         <h4>{authCtx.userId}</h4>
+                        <h4 className={styles.userType}>{authCtx.userData.userType === "user"?"USER":"COLLECTOR"}</h4>
                     </div>
                     <div className={styles.profileAddressScore}>
                         <div className={styles.profileData}>
