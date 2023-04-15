@@ -1,39 +1,36 @@
+import { useContext } from "react";
 import styles from "../../styles/Home.module.css";
 import Image from "next/image";
+import AuthContext from "@/store/AuthContext";
 
 export default function Profile(){
+    const authCtx = useContext(AuthContext);
+
+
     return (
         <>
             <div className={styles.profileContainer}>
                 <div className={styles.profileDpAddress}>
                     <div className={styles.profileDp}>
                         <Image src={"https://assets.leetcode.com/users/avatars/avatar_1646054996.png"} height={300} width={300} alt="profileDp" className={styles.profileImage}/>
-                        <h4>arindam369</h4>
+                        <h4>{authCtx.userId}</h4>
                     </div>
                     <div className={styles.profileAddressScore}>
                         <div className={styles.profileData}>
                             <div className={styles.profileQues}>Name:</div>
-                            <div className={styles.profileAns}>Arindam Halder</div>
+                            <div className={styles.profileAns}>{authCtx.userData.name}</div>
                         </div>
                         <div className={styles.profileData}>
                             <div className={styles.profileQues}>Email:</div>
-                            <div className={styles.profileAns}>halderarindam10000@gmail.com</div>
+                            <div className={styles.profileAns}>{authCtx.userData.email}</div>
                         </div>
                         <div className={styles.profileData}>
                             <div className={styles.profileQues}>Mobile:</div>
-                            <div className={styles.profileAns}>8777712395</div>
-                        </div>
-                        <div className={styles.profileData}>
-                            <div className={styles.profileQues}>Dept:</div>
-                            <div className={styles.profileAns}>IT</div>
-                        </div>
-                        <div className={styles.profileData}>
-                            <div className={styles.profileQues}>College:</div>
-                            <div className={styles.profileAns}>Jadavpur University</div>
+                            <div className={styles.profileAns}>{authCtx.userData.phone}</div>
                         </div>
                         <div className={styles.profileData}>
                             <div className={styles.profileQues}>Address:</div>
-                            <div className={styles.profileAns}>M-416, Sukantanagar, Near Jadavpur University Salt Lake Campus, 700009</div>
+                            <div className={styles.profileAns}>{authCtx.userData.address}</div>
                         </div>
 
                     </div>
@@ -63,7 +60,7 @@ export default function Profile(){
                 </div>
                 <div className={styles.coinSection}>
                     <div className={styles.profileScoreQues}>Total Coins:</div>
-                    <Image src={"/assets/star.png"} height={50} width={50} alt="coin" className={styles.coinIcon}/> 3312
+                    <Image src={"/assets/star.png"} height={50} width={50} alt="coin" className={styles.coinIcon}/> {authCtx.userData.coins}
                 </div>
             </div>
         </>

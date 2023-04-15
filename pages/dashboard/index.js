@@ -19,6 +19,7 @@ function Home() {
     setSelectedBullet(bulletName);
   }
   const authCtx = useContext(AuthContext);
+  console.log(authCtx.userData);
   authCtx.stopLoading();
 
   return (
